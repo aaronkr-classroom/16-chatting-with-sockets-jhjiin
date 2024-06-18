@@ -96,18 +96,16 @@ app.use((req, res, next) => {
  */
 
 // 애플리케이션에 Mongoose 설정
-const mongoose = require("mongoose"), // mongoose를 요청
-  dbName = "aaronkr";
+const mongoose = require("mongoose"); // mongoose를 요청
 
 // 데이터베이스 연결 설정
-mongoose.connect(`mongodb://127.0.0.1:27017/${dbName}`, {
-  useNewUrlParser: true,
-});
+mongoose.connect(
+  "mongodb+srv://ut-node:g32yQmEA7DA7cCTp@ut-node.u13qncj.mongodb.net/?retryWrites=true&w=majority&appName=UT-Node", // 데이터베이스 연결 설정 Atlas 경로 (lesson-15)
+);
 
-// 연결되면 메시지를 보냄
 const db = mongoose.connection;
 db.once("open", () => {
-  console.log(`Connected to ${dbName} MongoDB using Mongoose!`);
+  console.log("Connected to MONGODB!!!");
 });
 
 /**
@@ -116,7 +114,7 @@ db.once("open", () => {
  * =====================================================================
  */
 
-app.set("port", process.env.PORT || 3000);
+app.set("port", process.env.PORT || 3008);
 
 // ejs 레이아웃 렌더링
 app.set("view engine", "ejs"); // ejs를 사용하기 위한 애플리케이션 세팅
